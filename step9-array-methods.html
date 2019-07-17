@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+            //New methods in ES 6
+            /*
+            1. For each -> iterate over array
+            2. Map -> chagne the value or return array
+            3. Filter -> filters data
+            4. Reduce -> 
+            */
+
+            var powers = [6,1,44,67,87,98,3,45,62];
+            var doublepower =[];
+            var doublepower1 =[];
+
+            //Traditional method for iterating an array
+            for(let i=0; i< powers.length ;i++){
+                doublepower1.push(powers[i] * 2);
+            }
+            console.log("Array " + doublepower1)
+
+            //Just iterate over array
+            powers.forEach(function(val,ind,arr){
+                doublepower.push(val* 2);
+            });
+            console.log("Double power " + doublepower)
+                      
+           //Map function returns new array
+            var mappedvalue = powers.map(function(val,idx,arr){
+                return val*2;
+            });
+
+            console.log("Mapped function " + mappedvalue)
+
+            //filters data from array
+            var superPowers = powers.filter(function(val,ind,arr){
+                return val > 50;
+            });
+            console.log("Filter function output " + superPowers);
+
+            //reduce ( iterate array elements from left to right)
+            var totalPower = powers.reduce(function(pv,val,ind,arr){
+                console.log(val);
+                return pv+val;
+            }
+            ,0)
+
+            console.log("Reduce function output " + totalPower);
+
+             //reduce right ( iterate array elements from right to left)
+             var totalPower = powers.reduceRight(function(pv,val,ind,arr){
+                console.log(val);
+                return pv+val;
+            }
+            ,0)
+
+            console.log("Reduce Right fun output " + totalPower);
+
+            
+           
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    /*
+        Functions are first class citizens in JS
+        protype structure of particular obj
+        prototype is an object that is avilable in every object in js
+        Hero -> proto
+        |
+        hero -> proto
+        |
+        comichero
+
+        Methods alone can be attached to prototype.
+        We can attach properties as well. But in that case all instances have those
+
+        Compiler -> Converts JS to Machine language
+        Transpiler -> Babel for React. converts ES5 to ES6
+
+    */
+
+    //Tradational JS way
+   function heroold(fn,ln){ 
+    this.fname = fn;
+    this.lname =ln;
+    //kind of private var
+    var secret = "secret"
+   }
+   heroold.prototype.fullname = function(){
+        this.fname + " " + this.lname;
+   };
+
+   var heroold1 = new heroold("Batman" ," Test");
+   var heroold2 = new heroold("Batman" ," Test");
+    console.log(heroold1.fname + " " + heroold1.lname + heroold1.secret) ;
+    console.log(heroold1.fullname === heroold2.fullname);
+
+//ES 5 and 6 introduced classes
+    class Person{
+        constructor(title){
+            this.title =title;
+        }
+    }
+    class Hero extends Person{
+        constructor(fn,ln,th){
+            super(th);
+            this.fname = fn;
+            this.lname =ln;
+            this._secret ="hello there";
+        }
+
+        fullname(){
+            return this.fname + " " + this.lname;
+        }
+
+        get secret(){
+            return this._secret;
+        }
+
+        set secret(nsecret){
+            return this._secret = nsecret;
+        }
+    }
+
+    var hero1 = new Hero("Batman" ," Test" ,"title1");
+    var hero2 = new Hero("Batman" ," Test", "title2");
+    console.log(hero1.fname + " " + hero1.lname + " " + hero1.title);
+    console.log(hero1.fullname === hero2.fullname);
+    </script>
+</head>
+<body>
+    
+    
+</body>
+</html>
