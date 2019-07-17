@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let cart = {
+            getCostPrice : function(){
+                return 100;
+            },
+            getSellingPrice : function(){
+                let self =this;
+                function calculateProfit(){
+                    return self.getCostPrice() * 0.2;
+                }
+
+                return calculateProfit() + this.getCostPrice();
+            }
+        };
+
+        //call /apply and bind -> all change the scope of function.
+
+        /*
+        In ES 5 fat arrow functions => These are used to change the scope of functions
+        Fat arrow functions use parent scope..
+        in below example calculate profit uses selling price function
+        */
+        let cart2 = {
+            getCostPrice : function(){
+                return 100;
+            },
+            getSellingPrice : function(){
+                let calculateProfit = () => {
+                    return this.getCostPrice() * 0.2;
+                }
+                 return calculateProfit() + this.getCostPrice();
+            }
+        };
+        console.log(cart.getSellingPrice());
+        console.log(cart2.getSellingPrice());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

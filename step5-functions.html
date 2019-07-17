@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Functions</title>
+    <script>
+        //Default Parameters examples
+        function adder(num1=0 , num2 = 0){
+            return num1+num2
+        };
+
+        function adderWithoutDefaultParam(num1 , num2){
+            return num1+num2
+        };
+        console.log(adder(5)); //5
+        console.log(adderWithoutDefaultParam(5)); //NaN
+
+        //functions are objects in JS . Function object has a property called as arguments. But this is deprecated as of ES6.        
+        function adderWithVariableArgs(){
+            console.log(arguments.length);
+            let temp=0;
+            for (let index = 0; index < arguments.length; index++) {
+               temp += arguments[index];
+               
+            }
+            return temp;
+        };
+        console.log(adderWithVariableArgs(5));
+        console.log(adderWithVariableArgs(5,6));
+        console.log(adderWithVariableArgs(5,6,7));
+
+        //Rest arguments -> Rest arguments are used when defining the function
+        function adderWithRestArgs(...nums){
+            let temp=0;
+            for (let index = 0; index < nums.length; index++) {
+               temp += nums[index];
+               
+            }
+            return temp;
+        };
+        console.log(adderWithRestArgs(5));
+        console.log(adderWithRestArgs(5,6));
+        console.log(adderWithRestArgs(5,6,7));
+
+        // Spread is an operator. It also has 3 dots. It is used while calling the function.
+        //It can only be used in array
+        var props = [5,6,7,8]
+        console.log("Spread operator example" + adderWithRestArgs(...props));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
