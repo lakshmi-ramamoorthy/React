@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CallApplyBind</title>
+
+    <script>
+        
+        
+        var batman = {
+            title : "Batman",
+            firstname : "Bruce",
+            lastname : "Wayne",
+            fullname : function(city){
+                    return this.firstname + " " + this.lastname + " from city " + city;
+            }
+        };
+
+        var spiderman = {
+            title : "Spiderman",
+            firstname : "Peter",
+            lastname : "Parker",
+            
+        };
+        /*
+            Call / apply /bind all work similar..it calls the function by changing its context.
+            Only difference is call takes string argument.
+            apply takes array arguments.
+
+            Bind can be executed little later. Can we asigned to a function variable
+        */
+
+        console.log("From bat man - " +batman.fullname("Test city"));
+
+        console.log(" Call example - " + batman.fullname.call(spiderman , "New York"));
+
+        console.log(" Apply example - " + batman.fullname.apply(spiderman , ["New York"]));
+
+        var callfun = batman.fullname.bind(spiderman);
+        console.log("Bind example - " +callfun("New York"));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
