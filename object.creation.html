@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var obj1 = {};
+        var obj2 = new Object();
+        var obj3 = Object.create(null);
+        Object.defineProperty(obj3, "title" ,{ // This creates immuatble property
+            value : "Ironman",
+            writable : true, // This changes the mutability
+            enumerable : true //It is used to display the property..else object 3 doesnt have any property.
+        })
+        console.log("Value " + obj3.title);
+
+        obj3.title = "Joker";
+        console.log("Value " + obj3.title);
+
+       for(prop in obj3){
+           console.log(prop  + " " + obj3[prop]);
+       }
+
+       var hero = {
+           fname : 'lakshmi'
+       }
+       var obj4 = Object.create(hero);
+       console.log(obj4.fname);
+       Object.defineProperty(obj4 , "fname" , {
+           value : 'test'
+       } )
+       console.log(obj4.fname);
+       obj4.fname = "change to mutable check";
+       console.log(obj4.fname);
+
+       console.log(hero.fname);
+
+       var obj5 ={}
+       Object.defineProperty(obj5, "title" ,{ // This creates immuatble property
+            value : "Ironman",
+            writable : true, // This changes the mutability
+            enumerable : true, //It is used to display the property..else object 3 doesnt have any property.
+            configurable : true
+        })
+
+        console.log("Obj 5 Value " + obj5.title);
+        obj5.title = "Joker";
+        console.log("Obj 5 Value " + obj5.title);
+
+        Object.defineProperty(obj5, "title" ,{ // This creates immuatble property
+            value : "superman",
+            writable : false, 
+            enumerable : false, 
+            configurable : false
+        })
+
+        console.log("Obj 5 Value " + obj5.title);
+        obj5.title = "Joker";
+        console.log("Obj 5 Value " + obj5.title);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
